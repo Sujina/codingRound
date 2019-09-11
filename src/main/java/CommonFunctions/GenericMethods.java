@@ -8,13 +8,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.sun.jna.Platform;
+
+
 public class GenericMethods {
 	WebDriver driver ;
-	protected void waitFor(int durationInMilliSeconds) { // protected visiblitiy,static
+	protected void waitFor(int durationInMilliSeconds) { 
 		try {
 			Thread.sleep(durationInMilliSeconds);
 		} catch (InterruptedException e) {
-			e.printStackTrace(); // To change body of catch statement use File | Settings | File Templates.
+			e.printStackTrace(); 
 		}
 	}
 
@@ -31,18 +34,20 @@ public class GenericMethods {
 	}
 
 	public void setDriverPath() {
-		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\DELL\\Downloads\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		/*
-		 * if (PlatformUtil.isMac()) { System.setProperty("webdriver.chrome.driver",
-		 * "chromedriver"); } if (PlatformUtil.isWindows()) {
-		 * System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); } if
-		 * (PlatformUtil.isLinux()) { System.setProperty("webdriver.chrome.driver",
-		 * "chromedriver_linux"); }
-		 */
+		
+		if (Platform.isMac()) {
+			System.setProperty("webdriver.chrome.driver", "chromedriver");
+		}
+		if (Platform.isWindows()) {
+			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		}
+		if (Platform.isLinux()) {
+			System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
 		}
 
-	public WebDriver openApplication() throws InterruptedException { // datatpe
+		}
+
+	public WebDriver openApplication() throws InterruptedException { 
 		 driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.cleartrip.com/");
