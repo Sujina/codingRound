@@ -23,6 +23,7 @@
       <artifactId>testng</artifactId>
       <version>6.11</version>
       <scope>compile</scope>
-    </dependency>
+    </dependency>   
+  
   </dependencies>
 </project>
